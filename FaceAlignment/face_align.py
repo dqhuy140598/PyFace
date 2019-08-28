@@ -11,6 +11,7 @@ class FaceAlignment:
         self.FaceDetectorAlign = FaceDetectAlign()
 
     def run(self,face):
+
         crop_size = 112
         scale = crop_size / 112.
         reference = get_reference_facial_points(default_square=True) * scale
@@ -24,7 +25,7 @@ class FaceAlignment:
         if len(landmarks) > 0:  # If the landmarks cannot be detected, the img will be discarded
             facial5points = [[landmarks[0][j], landmarks[0][j + 5]] for j in range(5)]
             warped_face = warp_and_crop_face(np.array(face), facial5points, reference, crop_size=(crop_size, crop_size))
-            img_warped = Image.fromarray(warped_face)
+            img_warped = warped_face
 
         return img_warped
 
