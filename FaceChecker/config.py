@@ -1,0 +1,6 @@
+NOISE_THRESHOLD = 10
+FSANET_CAPSULE_WEIGHTS_PATH  = 'FaceChecker/HeadPoseEstimator/face_direction/weights/fsanet_capsule_3_16_2_21_5.h5'
+FSANET_NOS_CAPSULE_WEIGHTS_PATH = 'FaceChecker/HeadPoseEstimator/face_direction/weights/fsanet_noS_capsule_3_16_2_192_5.h5'
+FSANET_VAR_CAPSULE_WEIGHTS_PATH = 'FaceChecker/HeadPoseEstimator/face_direction/weights/fsanet_var_capsule_3_16_2_21_5.h5'
+FINAL_WEIGHTS_PATH = (FSANET_CAPSULE_WEIGHTS_PATH,FSANET_VAR_CAPSULE_WEIGHTS_PATH,FSANET_NOS_CAPSULE_WEIGHTS_PATH)
+FACE_DETECTOR_MODEL_PATH = 'FaceChecker/FaceDetector/pretrain/yolov2_tiny-face.h5'
