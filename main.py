@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     face_recognize = FaceRecognize(face_alignment,face_checker)
 
-    image = cv2.imread("madonna-announces-new-album--madame-x--2019-04-15.jpg")
+    image = cv2.imread("Elton_John_2011_Shankbone_2_(cropped).jpg")
 
     image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 
