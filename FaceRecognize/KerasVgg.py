@@ -17,6 +17,15 @@ class FaceRecognize:
         self.data_dir = data_dir
         self.face_alignment = face_alignment
 
+        self.person_names = {
+            'ben_afflek':0,
+            'elton_john':1,
+            'jerry_seinfeld':2,
+            'madonna':3,
+            'mindy_kaling':4
+        }
+
+
         if not os.path.exists("FaceRecognize/embedding/embeddings.pkl"):
             self.preComputeEmbeddingData(self.data_dir)
 
@@ -31,8 +40,12 @@ class FaceRecognize:
         self.knn.fit(self.embeddings,self.labels)
 
     def preComputeEmbeddingData(self,data_dir):
+
+        print('in here')
+
         if not os.path.exists(data_dir):
             raise FileNotFoundError("Database Not Found")
+
         celeb_names = os.listdir(data_dir)
         cls = 0
         list_images = []
@@ -40,6 +53,7 @@ class FaceRecognize:
         for name in celeb_names:
             images_dir = os.path.join(data_dir,name)
             list_name_images = os.listdir(images_dir)
+            cls = self.person_names[name]
             for image_name in list_name_images:
                 image_path = os.path.join(images_dir,image_name)
                 image = cv2.imread(image_path)
@@ -47,7 +61,6 @@ class FaceRecognize:
                 face = cv2.resize(image,self.input_shape[:2])
                 list_images.append(face)
                 list_labels.append(cls)
-            cls = cls + 1
 
         list_images = np.array(list_images)
         list_labels = np.array(list_labels)
@@ -68,7 +81,11 @@ class FaceRecognize:
         embedding_face = self.vggface.predict(face)
         embedding_face = embedding_face.reshape(-1,2048)
         label = self.knn.predict(embedding_face)
-        print(label)
+        label = label[0]
+
+        name = [k for k,v in self.person_names.items() if v == label]
+
+        print(name)
 
     def test_on_image(self,image):
 

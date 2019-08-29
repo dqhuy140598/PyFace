@@ -20,6 +20,8 @@ class FaceAlignment:
 
         _, landmarks = self.FaceDetectorAlign.runOn(face)
 
+        print(landmarks)
+
         img_warped = None
 
         if len(landmarks) > 0:  # If the landmarks cannot be detected, the img will be discarded

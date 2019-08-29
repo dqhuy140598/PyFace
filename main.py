@@ -6,6 +6,7 @@ from FaceChecker.NoiseEstimator.NoiseEstimator import NoiseEstimator
 from FaceAlignment.face_align import FaceAlignment
 import cv2
 import matplotlib.pyplot as plt
+
 from FaceRecognize.KerasVgg import FaceRecognize
 
 if __name__ == '__main__':
@@ -20,7 +21,7 @@ if __name__ == '__main__':
 
     face_recognize = FaceRecognize(face_alignment,face_checker)
 
-    image = cv2.imread("AN2I5CXEDMZYPCD6YVAKOZLIUA.jpg")
+    image = cv2.imread("madonna-announces-new-album--madame-x--2019-04-15.jpg")
 
     image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 
